@@ -1,0 +1,30 @@
+React Application directory
+"task1"
+To create a docker image
+- cd task1
+- docker build -t <image-name>:<tag> .
+
+To push a docker image
+- docker login
+- docker push
+
+
+ To run deployment file
+- kubectl apply -f deployment.yaml
+
+To run service file
+ - kubectl apply -f service.yaml
+ 
+To run ingress file
+- kubectl apply -f ingress.yaml
+
+To run all file at once.( using kustomize)
+- kubectl apply -k .
+
+To install nginx-ingress-controller
+- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
+To access the application.
+- kubectl port-forward svc/react-service --address 0.0.0.0 80:80
+
+

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: reactapp
+  template:
+    metadata:
+      labels:
+        app: reactapp
+    spec:
+      containers:
+      - name:  react-app
+        image: rabee123/task:1
+        ports:
+        - containerPort: 80
+
