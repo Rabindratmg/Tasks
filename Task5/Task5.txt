@@ -1,0 +1,20 @@
+Installing microk8s in ubuntu22.04 
+steps:
+	- Install snapd 
+	- Install microk8s using snap
+		$ sudo snap install microk8s --classic --channel=1.29
+	- Add the current user to the microk8 group and .kube file
+		$ sudo usermod -a -G microk8s $USER
+		$ sudo chown -f -R $USER ~/.kube	
+	- Restart the server or group
+		$ newgroups microk8s
+	- Check the status
+		$ microk8s status
+	- Check the nodes
+		$ microk8s kubectl get nodes
+	- Create nginx-deployment file and apply
+		$ microk8s kubectl apply -f deployment.yaml
+	- Create service to expose the deployment and apply
+		$ microk8s kubectl apply -f service.yaml
+	- Port-forwarding the service to expose
+		$ microk8s kubectl port-forward svc/nginx-service --address 0.0.0.0 80:80
