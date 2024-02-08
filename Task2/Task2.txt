@@ -1,0 +1,18 @@
+JavaAPI Code Directory = "Java-API"
+- Create the docker image and upload to the docker hub
+steps:
+	- docker build -t <image>:<tag>
+	- docker login 
+	- docker push
+
+- Run deployment.yaml file using the pushed docker image
+-- kubectl apply -f deployment.yaml
+
+- Run service.yaml file 
+-- kubectl apply -f service.yaml
+
+- Expose the service to access the api
+-- kubectl port-forward svc/javapi-service --address 0.0.0.0 8090:8080
+
+- Acess the api using serverIP:8090/api
+
