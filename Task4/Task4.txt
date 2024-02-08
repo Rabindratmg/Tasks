@@ -1,0 +1,7 @@
+Running emqx on docker container
+
+- docker-compose up -d --build
+
+Access the emqx-UI 
+- <server_ip>:18083
+
