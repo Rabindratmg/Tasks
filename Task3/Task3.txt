@@ -1,0 +1,23 @@
+Creating docker container
+- docker-compose up -d --build
+
+Installing filebeat(Agent which sends the logs from system)
+- curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.12.1-amd64.deb
+- sudo dpkg -i filebeat-8.12.1-amd64.deb
+
+Add the elasticsearch source in the filebeat config
+- cd /etc/filebeat
+- sudo vi filebeat.yml
+
+ADD the following sources
+- filebeats.inputs
+	- enabled: true
+	- paths
+	    - /var/lib/docker/containers/container-id/*.log
+- output.elasticsearch
+	- hosts: localhost:9200
+
+save the config file and restart the filebeat
+Open the kibana dashboard
+- localhost:5601
+
